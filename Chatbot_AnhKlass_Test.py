@@ -1,7 +1,7 @@
 import pandas as pd
 import pickle
 import numpy as np
-names = [ "Linear SVM","Nearest Neighbors", "RBF SVM",
+names = [ "Nearest Neighbors",
          "Decision Tree", "Random Forest", "MLP", "AdaBoost",
          "Naive Bayes", "QDA"]
 Data = pd.read_pickle('Chatbot_Test')
