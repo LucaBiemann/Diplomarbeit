@@ -1,7 +1,7 @@
 # Diplomarbeit
 Durch die hier hochgeladenen Skripte, Daten und Modelle können die Arbeitsprozesse, der zugehörigen Diplomarbeit, nachempfunden, sowie dessen Ergebnisse repliziert werden.
 ## Skripte:
-Die Dateien mit dem Präfix *Chatbot* beziehen sich auf das erste Szenario zur Pattern-Reconstruction-Attack, entsprechend beziehen sich Dateien mit dem Präfix *Email* auf das zweiten Szenario zur Keyword-Inference-Attack. 
+Die Dateien mit dem Präfix *Chatbot* beziehen sich auf das erste Szenario zur Pattern-Reconstruction-Attack, entsprechend beziehen sich Dateien mit dem Präfix *Email* auf das zweiten Szenario zur Keyword-Inference-Attack. \
 Der Algorithmus, der im Chatbot-Szenario für die Erstellung der Ausweisnummern angewandt wurde, ist im Skript *AusweisNr* zu finden. Die Anwendung de Algorithmus und die darauffolgende Erstellung der Label ist im Skript *DatenNr* festgehalten. 
 Das Einfügen er Schlüsselwörter und Namen geschah durch das *Keywords* Skript.
 Die Erstellung der GPLM-Vektoren, die für Trainings- sowie Testdaten verwendet worden sind, ist mittels der im *gplm*-Ordner spezifizierten Funktionen durchgeführt worden. 
