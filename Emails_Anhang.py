@@ -119,7 +119,7 @@ Data_erg_art = Data_erg_art.groupby(by=['Klassifikator']).mean()
 Data_erg_klass = Data_erg_klass.groupby(by=['Model']).mean()
 
 
-with pd.ExcelWriter("Daten/Emails_Anhang.xlsx") as writer:
+with pd.ExcelWriter("Emails_Anhang.xlsx") as writer:
     Data_erg_key.to_excel(writer, sheet_name="Keywords")
     Data_erg_names.to_excel(writer, sheet_name="Names")
     Data_erg_seqlen.to_excel(writer, sheet_name="Length")
