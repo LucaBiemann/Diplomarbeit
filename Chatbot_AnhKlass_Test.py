@@ -23,5 +23,5 @@ for n in names:
         Data_erg_klass = Data_erg_klass.append({'Klassifikator': n, m:sum(Data[ m + n]) / len(Data)}, ignore_index=True)
 
 Data_erg_klass = Data_erg_klass.groupby(by=['Klassifikator']).agg(max)
-with pd.ExcelWriter("Daten/Chatbot_Klass.xlsx") as writer:
+with pd.ExcelWriter("Chatbot_Klass.xlsx") as writer:
     Data_erg_klass.to_excel(writer, sheet_name="Klassifikator")
