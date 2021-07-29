@@ -339,7 +339,7 @@ for m in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
         print('Position:', Position + 1)
         Data_erg_pos = Data_erg_pos.append({'Number': number, m: Position}, ignore_index=True)
 Data_erg_pos = Data_erg_pos.groupby(by=['Number']).agg(max)
-with pd.ExcelWriter("Daten/Chatbot_Anhang.xlsx") as writer:
+with pd.ExcelWriter("Chatbot_Anhang.xlsx") as writer:
     Data_erg_zeichen.to_excel(writer, sheet_name="Stelle")
     Data_erg_z5.to_excel(writer, sheet_name='Zeichen5')
     Data_erg_topk.to_excel(writer, sheet_name="topk")
