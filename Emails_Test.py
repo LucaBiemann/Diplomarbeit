@@ -218,7 +218,7 @@ for v in ['wb', 'bb']:
 
 Data_erg_wb = Data_erg_wb.groupby(by=['Klassifikator']).agg(max)
 Data_erg_bb = Data_erg_bb.groupby(by=['Klassifikator']).agg(max)
-with ExcelWriter("Daten/Email_Test.xlsx") as writer:
+with ExcelWriter("Email_Test.xlsx") as writer:
  Data_erg_spam.to_excel(writer, sheet_name="Spam-Filter")
  Data_erg_wb.to_excel(writer, sheet_name="White-Box")
  Data_erg_bb.to_excel(writer, sheet_name="Black-Box")
