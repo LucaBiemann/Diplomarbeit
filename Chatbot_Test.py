@@ -74,5 +74,5 @@ for m in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
     Data_erg.append({'Zeichen:': 'Topk', m: sum(Data_Num[m + 'Topk']) / len(Data_Num)}, ignore_index=True)
     Data_erg.append({'Zeichen:': 'All', m: sum(Data_Num[m + 'Allpred']) / len(Data_Num)}, ignore_index=True)
 Data_erg = Data_erg.groupby(by=['Zeichen']).agg(max)
-with pd.ExcelWriter("Daten/Chatbot_Test.xlsx") as writer:
+with pd.ExcelWriter("Chatbot_Test.xlsx") as writer:
     Data_erg.to_excel(writer, sheet_name="Chatbot_Test")
