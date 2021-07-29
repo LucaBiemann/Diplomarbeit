@@ -35,5 +35,5 @@ for n in names:
                     {'Model': n, '{}'.format(m): sum(data_sample['{}_{}'.format(k, m)]) / len(data_sample)},
                     ignore_index=True)
 Data_erg_klass = Data_erg_klass.groupby(by=['Model']).agg(max)
-with pd.ExcelWriter("Daten/Emails_AnhKlass.xlsx") as writer:
+with pd.ExcelWriter("Emails_AnhKlass.xlsx") as writer:
     Data_erg_klass.to_excel(writer, sheet_name="Klassifikator")
