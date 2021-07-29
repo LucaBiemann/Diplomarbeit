@@ -11,5 +11,5 @@ Schlussendlich wird in den *AttackFunction* Skripten der komplette Ablauf der be
 ## Daten
 Für das erste Szenario sind jeweils die zum Training verwendeten Nachrichten und Ausweisnummern in zwei getrennten Datensätzen (*Messages*, *AusweisNr*) sowie der für die Tests verwendete Datensatz mit 19.00 Nachrichten und 1.000 Nummern (*Test*) hochgeladen.\
 Da der Enron-Emails-Datensatz sehr umfangreich ist, wurde hier nur eine Vorauswahl der Daten hochgeladen, die entsprechend zum Trainieren und Testen der Keyword-Inference-Attack (*WB_Train*, *Test*) und des SpamFilters (*SpamFilter_Train*, *SpamFilter_Test*) verwendet worden sind. \
-Um das Einfügen der Schlüsselwörter exemplarisch durchführen zu können wurde der Yelp-Reviews-Datensatz einmal in der Rohform (*yelp.csv*) und einmal nach dem Einfügen (*BB_Train*) hochgeladen. 
+Um das Einfügen der Schlüsselwörter exemplarisch durchführen zu können wurde der Yelp-Reviews-Datensatz einmal in der Rohform (*yelp.csv*) und einmal nach dem Einfügen (*BB_Train*) hochgeladen und eine Ausschnitt aus den dem Enron-Datensatz (*Enron*)
 
