@@ -56,5 +56,8 @@ for c, n in zip(classifiers, names):
                 X_train, y_train)
             acc_mlp = clf.score(X_valid, y_valid)
             print('{} {} {} Accuracy:'.format(m, i,n), acc_mlp)
-            filename = 'models/Anhang_Mail_Models/{}_{}_{}.sav'.format(n,m, i)
+            if n == "RBF SVM":
+              filename = 'models/Anhang_Mail_Models2/{}_{}_{}.sav'.format(n,m, i)
+            else:
+              filename = 'models/Anhang_Mail_Models/{}_{}_{}.sav'.format(n,m, i)
             pickle.dump(clf, open(filename, 'wb'))
