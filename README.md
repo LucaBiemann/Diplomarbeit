@@ -11,7 +11,7 @@ Schlussendlich wird in den *AttackFunction* Skripten der komplette Ablauf der be
 ## Daten
 Die zugehörigen Daten sind unter folgendem Link verfügbar: \
 https://drive.google.com/file/d/1yVvv7GZcL4kyw8HpAhtQV3cFk-SBWDGq/view?usp=sharing \
-Die Daten sollten in den Ordner *Diplomarbeit* entpackt werden.\
+Die Dateien sollten in den Ordner *Diplomarbeit* entpackt werden.\
 Für das erste Szenario sind jeweils die zum Training verwendeten Nachrichten und Ausweisnummern in zwei getrennten Datensätzen (*Messages*, *AusweisNr*) sowie der für die Tests verwendete Datensatz mit 19.00 Nachrichten und 1.000 Nummern (*Test*) hochgeladen.\
 Da der Enron-Emails-Datensatz sehr umfangreich ist, wurde hier nur eine Vorauswahl der Daten hochgeladen, die entsprechend zum Trainieren und Testen der Keyword-Inference-Attack (*WB_Train*, *Test*) und des SpamFilters (*SpamFilter_Train*, *SpamFilter_Test*) verwendet worden sind. \
 Um das Einfügen der Schlüsselwörter exemplarisch durchführen zu können wurde der Yelp-Reviews-Datensatz einmal in der Rohform (*yelp.csv*) und einmal nach dem Einfügen (*BB_Train*) hochgeladen und eine Ausschnitt aus den dem Enron-Datensatz (*Enron*)
