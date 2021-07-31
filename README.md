@@ -9,6 +9,9 @@ Alle Modelle, die für die Attacken oder die weiterführenden Analysen im Anhang
 Die Daten zu den in der Arbeit verwendeten Diagrammen und Tabellen lassen sich durch die Skripte mit dem Suffix *Test* oder *Anhang* generieren.\
 Schlussendlich wird in den *AttackFunction* Skripten der komplette Ablauf der beiden durchgeführten Angriffe automatisiert durchgegangen. Der Input beider Funktion entspricht einen GPLM-Vektor und der Output jeweils den Ergebnissen der Attacken. Demnach ist der Output für eine erfolgreiche Attacke im ersten Szenario die vollständig rekonstruierte Ausweisnummer und für das zweite die gefundenen verdächtigen Wörter sowie Mitarbeiternamen. Um den zweiten Angriff in einem realen Kontext nützlicher zu gestalten werden hier die Wahrscheinlichkeiten, mit denen ein Schlüsselwort in der jeweiligen Nachricht vorkommt, ebenfalls angegeben. 
 ## Daten
+Die zugehörigen Daten sind unter folgendem Link verfügbar: \
+https://drive.google.com/file/d/1yVvv7GZcL4kyw8HpAhtQV3cFk-SBWDGq/view?usp=sharing \
+Die Daten sollten in den Ordner *Diplomarbeit* entpackt werden.\
 Für das erste Szenario sind jeweils die zum Training verwendeten Nachrichten und Ausweisnummern in zwei getrennten Datensätzen (*Messages*, *AusweisNr*) sowie der für die Tests verwendete Datensatz mit 19.00 Nachrichten und 1.000 Nummern (*Test*) hochgeladen.\
 Da der Enron-Emails-Datensatz sehr umfangreich ist, wurde hier nur eine Vorauswahl der Daten hochgeladen, die entsprechend zum Trainieren und Testen der Keyword-Inference-Attack (*WB_Train*, *Test*) und des SpamFilters (*SpamFilter_Train*, *SpamFilter_Test*) verwendet worden sind. \
 Um das Einfügen der Schlüsselwörter exemplarisch durchführen zu können wurde der Yelp-Reviews-Datensatz einmal in der Rohform (*yelp.csv*) und einmal nach dem Einfügen (*BB_Train*) hochgeladen und eine Ausschnitt aus den dem Enron-Datensatz (*Enron*)
