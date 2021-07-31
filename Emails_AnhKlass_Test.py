@@ -17,7 +17,10 @@ for n in names:
                 data_key = dataset[dataset[k] == 1]
                 data_sample = data_key.append(dataset[dataset[k] == 0].sample(n=len(data_key) * 19))
                 X_input = scaler.transform(list(data_sample['{}emb'.format(m)].values))
-                filename = 'C:/Users/lucab/PycharmProjects/dipldata/Anhang_Mail_Models/{}_{}_{}.sav'.format(n, m, k)
+                if n == "RBF SVM":
+                     filename = 'C:/Users/lucab/PycharmProjects/dipldata/Anhang_Mail_Models2/{}_{}_{}.sav'.format(n, m, k)
+                else:
+                     filename = 'C:/Users/lucab/PycharmProjects/dipldata/Anhang_Mail_Models/{}_{}_{}.sav'.format(n, m, k)
                 loaded_model = pickle.load(open(filename, 'rb'))
                 probs = loaded_model.predict(X_input)
                 data_sample.loc[:, '{}_{}_pred'.format(k, m)] = probs
