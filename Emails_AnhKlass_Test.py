@@ -6,21 +6,22 @@ key_word_list = ['usb stick','extortion', 'password', 'trade secret', 'intimidat
        'fictitious transaction', 'overvaluation', 'tax evasion', 'underrate',
        'overstate',]
 names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Gaussian Process",
-         "Decision Tree", "Random Forest", "Neural Net", "AdaBoost",
+         "Decision Tree", "Random Forest", "MLP", "AdaBoost",
          "Naive Bayes", "QDA"]
 dataset = pd.read_pickle('Emails_Test')
+Data_erg_klass = pd.DataFrame([])
 for n in names:
     for m in ['BERT', 'XLNet', 'ERNIE', 'T5']:
         for k in key_word_list:
-            scaler = pickle.load(open('models/scaler_keywords_{}.pkl'.format(m), 'rb'))
+            scaler = pickle.load(open('models/email/wb/scaler_keywords_{}.pkl'.format(m), 'rb'))
             for k in key_word_list:
                 data_key = dataset[dataset[k] == 1]
                 data_sample = data_key.append(dataset[dataset[k] == 0].sample(n=len(data_key) * 19))
                 X_input = scaler.transform(list(data_sample['{}emb'.format(m)].values))
                 if n == "RBF SVM":
-                     filename = 'C:/Users/lucab/PycharmProjects/dipldata/Anhang_Mail_Models2/{}_{}_{}.sav'.format(n, m, k)
+                     filename = 'models/Anhang_Mail_Models2/{}_{}_{}.sav'.format(n, m, k)
                 else:
-                     filename = 'C:/Users/lucab/PycharmProjects/dipldata/Anhang_Mail_Models/{}_{}_{}.sav'.format(n, m, k)
+                     filename = 'models/Anhang_Mail_Models/{}_{}_{}.sav'.format(n, m, k)
                 loaded_model = pickle.load(open(filename, 'rb'))
                 probs = loaded_model.predict(X_input)
                 data_sample.loc[:, '{}_{}_pred'.format(k, m)] = probs
@@ -37,6 +38,6 @@ for n in names:
                 Data_erg_klass = Data_erg_klass.append(
                     {'Model': n, '{}'.format(m): sum(data_sample['{}_{}'.format(k, m)]) / len(data_sample)},
                     ignore_index=True)
-Data_erg_klass = Data_erg_klass.groupby(by=['Model']).agg(max)
+Data_erg_klass = Data_erg_klass.groupby(by=['Model']).mean()
 with pd.ExcelWriter("Emails_AnhKlass.xlsx") as writer:
     Data_erg_klass.to_excel(writer, sheet_name="Klassifikator")

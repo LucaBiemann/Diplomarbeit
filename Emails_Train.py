@@ -117,12 +117,12 @@ for v,n in zip([dataset_wb, dataset_bb],['wb','bb']):
         X_train, y_train)
     acc_mlp = clf.score(X_valid, y_valid)
     print('Accuracy GPLM:', acc_mlp)
-    filename = 'models/mail/{}/MLP_gplm.sav'.format(n)
+    filename = 'models/email/{}/MLP_gplm.sav'.format(n)
     pickle.dump(clf, open(filename, 'wb'))
     for m in ['BERT', 'XLNet', 'ERNIE', 'T5']:
 
         scaler.fit(list(v['{}emb'.format(m)].values))
-        pickle.dump(scaler, open('models/mail/{}/scaler_keywords_{}.pkl'.format(n,m), 'wb'))
+        pickle.dump(scaler, open('models/email/{}/scaler_keywords_{}.pkl'.format(n,m), 'wb'))
 
 
         X_train, X_valid, y_train, y_valid = \
@@ -139,7 +139,7 @@ for v,n in zip([dataset_wb, dataset_bb],['wb','bb']):
             X_train, y_train)
         acc_mlp = clf.score(X_valid, y_valid)
         print('{} Accuracy Crime:'.format(m), acc_mlp)
-        filename = 'models/mail/{}/{}/MLP_{}_crime.sav'.format(n,m,m)
+        filename = 'models/email/{}/{}/MLP_{}_crime.sav'.format(n,m,m)
         pickle.dump(clf, open(filename, 'wb'))
 
         for i in key_word_list:
@@ -161,7 +161,7 @@ for v,n in zip([dataset_wb, dataset_bb],['wb','bb']):
                     X_train, y_train)
             acc_mlp = clf.score(X_valid, y_valid)
             print('{} Accuracy  {}:'.format(m,i), acc_mlp)
-            filename = 'models/mail/{}/{}/Linear SVM_{}_{}.sav'.format(n,m,m,i)
+            filename = 'models/email/{}/{}/Linear SVM_{}_{}.sav'.format(n,m,m,i)
             pickle.dump(clf, open(filename, 'wb'))
 
         for i in name_list:
@@ -182,7 +182,7 @@ for v,n in zip([dataset_wb, dataset_bb],['wb','bb']):
                     X_train, y_train)
             acc_mlp = clf.score(X_valid, y_valid)
             print('{} Accuracy  {}:'.format(m,i), acc_mlp)
-            filename = 'models/mail/{}/{}/Linear SVM_{}_{}.sav'.format(n,m,m,i)
+            filename = 'models/email/{}/{}/Linear SVM_{}_{}.sav'.format(n,m,m,i)
             pickle.dump(clf, open(filename, 'wb'))
 
         dataset_neg = v[v.labeled == 0]
@@ -278,4 +278,4 @@ for v,n in zip([dataset_wb, dataset_bb],['wb','bb']):
                 print(
                     f'Epoch {e + 0:03}: | Train Loss: {train_epoch_loss / len(train_loader):.5f} | Val Loss: {val_epoch_loss / len(valid_loader):.5f} | Train Acc: {train_epoch_acc / len(train_loader):.3f}| Val Acc: {val_epoch_acc / len(valid_loader):.3f}')
         torch.save(model_start,
-                   'models/mail/{}/{}/Binary_Verdacht_{}'.format(n,m,m))
+                   'models/email/{}/{}/Binary_Verdacht_{}'.format(n,m,m))

@@ -67,7 +67,7 @@ for i in ['BERT','XLNet','ERNIE','GPT2' ,'T5']:
     test_loader_binary_front = DataLoader(dataset=test_dataset_binary_front, batch_size=1)
     model_binary_front = torch.load(
             'models/spam/Binary_Spam_{}'.format(i),
-            map_location=torch.device('cuda:0'))
+            map_location=torch.device('cuda:0' if torch.cuda.is_available() else "cpu"))
     y_pred_list = []
     with torch.no_grad():
             model_binary_front.eval()
@@ -99,15 +99,15 @@ data_man = dataset[dataset.labeled == 1]
 for v in ['wb', 'bb']:
     Data_erg = pd.DataFrame([])
     for m in ['BERT', 'XLNet', 'ERNIE', 'T5']:
-        scaler = pickle.load(open('models/mail/{}/scaler_keywords_{}.pkl'.format(v,m), 'rb'))
+        scaler = pickle.load(open('models/email/{}/scaler_keywords_{}.pkl'.format(v,m), 'rb'))
         X_input = scaler.transform(list(dataset['{}emb'.format(m)].values))
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         test_dataset_binary_front = BERT(torch.from_numpy(np.array(X_input)).float(),
                                          torch.from_numpy(np.array(dataset['labeled'])).long())
         test_loader_binary_front = DataLoader(dataset=test_dataset_binary_front, batch_size=1)
         model_binary_front = torch.load(
-            'models/mail/{}/{}/Binary_Verdacht_{}'.format(v,m, m),
-            map_location=torch.device('cuda:0'))
+            'models/email/{}/{}/Binary_Verdacht_{}'.format(v,m, m),
+            map_location=torch.device('cuda:0' if torch.cuda.is_available() else "cpu"))
         y_pred_list = []
         with torch.no_grad():
             model_binary_front.eval()
@@ -133,7 +133,7 @@ for v in ['wb', 'bb']:
         dataset_verd = dataset[dataset['verd_{}_pred'.format(m)] == 1]
         print(sum(dataset_verd['labeled']))
         X_input = scaler.transform(list(dataset_verd['{}emb'.format(m)].values))
-        filename = 'models/mail/{}/{}/MLP_{}_crime.sav'.format(v,m, m)
+        filename = 'models/email/{}/{}/MLP_{}_crime.sav'.format(v,m, m)
         loaded_model = pickle.load(open(filename, 'rb'))
         probs = loaded_model.predict(X_input)
         dataset_verd.loc[:, 'crime_{}_pred'.format(m)] = probs
@@ -161,7 +161,7 @@ for v in ['wb', 'bb']:
             dataset_crime['keywords_{}'.format(m)] = 0
             dataset_crime['KeyCorr_{}'.format(m)] = 0
             for i in k:
-                filename = 'models/mail/{}/{}/Linear SVM_{}_{}.sav'.format(v,m,m, i)
+                filename = 'models/email/{}/{}/Linear SVM_{}_{}.sav'.format(v,m,m, i)
                 loaded_model = pickle.load(open(filename, 'rb'))
                 probs = loaded_model.predict(X_input)
                 dataset_crime.loc[:, '{}_{}_pred'.format(i, m)] = probs
@@ -187,7 +187,7 @@ for v in ['wb', 'bb']:
             print(m, c, len(date_names[date_names['KeyCorr_{}'.format(m)] == 1]))
             X_input = scaler.transform(list(date_names['{}emb'.format(m)].values))
             for i in n:
-                filename = 'models/mail/{}/{}/Linear SVM_{}_{}.sav'.format(v,m,m, i)
+                filename = 'models/email/{}/{}/Linear SVM_{}_{}.sav'.format(v,m,m, i)
                 loaded_model = pickle.load(open(filename, 'rb'))
                 probs = loaded_model.predict(X_input)
                 date_names.loc[:, '{}_{}_pred'.format(i, m)] = probs
