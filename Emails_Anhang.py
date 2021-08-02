@@ -30,7 +30,7 @@ for m in ['BERT', 'XLNet', 'ERNIE', 'T5']:
         data_key = dataset[dataset[k] == 1]
         data_sample = data_key.append(dataset[dataset[k] == 0].sample(n=len(data_key) * 19))
         X_input = scaler.transform(list(data_sample['{}emb'.format(m)].values))
-        filename = 'models/mail/wb/{}/Linear SVM_{}_{}.sav'.format(m, m, k)
+        filename = 'models/email/wb/{}/Linear SVM_{}_{}.sav'.format(m, m, k)
         loaded_model = pickle.load(open(filename, 'rb'))
         probs = loaded_model.predict(X_input)
         data_sample.loc[:, '{}_{}_pred'.format(k, m)] = probs
@@ -68,7 +68,7 @@ for m in ['BERT', 'XLNet', 'ERNIE', 'T5']:
 
         data_sample = data_name.append(dataset[dataset[n] != 0].sample(n=len(data_name) * 19))
         X_input = scaler.transform(list(data_sample['{}emb'.format(m)].values))
-        filename = 'models/mail/wb/{}/Linear SVM_{}_{}.sav'.format(m, m, n)
+        filename = 'models/email/wb/{}/Linear SVM_{}_{}.sav'.format(m, m, n)
         loaded_model = pickle.load(open(filename, 'rb'))
         probs = loaded_model.predict(X_input)
         data_sample.loc[:, '{}_{}_pred'.format(n, m)] = probs
