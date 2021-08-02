@@ -48,5 +48,5 @@ for c, n in zip(classifiers, names):
                 filename = 'models/Anhang_Chatbot_Models/{}_{}_Zeichen{}.sav'.format(n,m,i)
                 pickle.dump(clf, open(filename, 'wb'))
                 #accuracy_lin = clf.score(X_valid, y_valid)
-                print('{} {}Accuracy Linear Kernel Zeichen {}:'.format(n,m,i))
+                print('{} {} Zeichen {}:'.format(n,m,i))
 
