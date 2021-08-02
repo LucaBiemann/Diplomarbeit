@@ -58,7 +58,7 @@ for m in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
                 else:
                     Data_Num.loc[index, m + 'pred' + str(i)] = 0
         print(m, 'Zeichen ', i, 'Accuracy: ', sum(Data_Num[m + 'pred' + str(i)]) / len(Data_Num))
-        Data_erg.append({'Zeichen:': i, m: sum(Data_Num[m + 'pred' + str(i)]) / len(Data_Num)}, ignore_index=True)
+        Data_erg = Data_erg.append({'Zeichen:': i, m: sum(Data_Num[m + 'pred' + str(i)]) / len(Data_Num)}, ignore_index=True)
     for index, row in Data_Num.iterrows():
         if row[m + 'All'] == 10:
             Data_Num.loc[index, m + 'Allpred'] = 1
@@ -71,8 +71,8 @@ for m in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
             Data_Num.loc[index, m + 'Topk'] = 0
     print(m, 'Zeichen Topk ', 'Accuracy: ', sum(Data_Num[m + 'Topk']) / len(Data_Num))
     print(m, 'All ', 'Accuracy: ', sum(Data_Num[m + 'Allpred']) / len(Data_Num))
-    Data_erg.append({'Zeichen': 'Topk', m: sum(Data_Num[m + 'Topk']) / len(Data_Num)}, ignore_index=True)
-    Data_erg.append({'Zeichen': 'All', m: sum(Data_Num[m + 'Allpred']) / len(Data_Num)}, ignore_index=True)
+    Data_erg = Data_erg.append({'Zeichen': 'Topk', m: sum(Data_Num[m + 'Topk']) / len(Data_Num)}, ignore_index=True)
+    Data_erg = Data_erg.append({'Zeichen': 'All', m: sum(Data_Num[m + 'Allpred']) / len(Data_Num)}, ignore_index=True)
 Data_erg = Data_erg.groupby(by=['Zeichen']).agg(max)
 with pd.ExcelWriter("Chatbot_Test.xlsx") as writer:
     Data_erg.to_excel(writer, sheet_name="Chatbot_Test")
