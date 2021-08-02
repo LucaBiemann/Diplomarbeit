@@ -4,7 +4,7 @@ import numpy as np
 names = [ "Nearest Neighbors",
          "Decision Tree", "Random Forest", "MLP", "AdaBoost",
          "Naive Bayes", "QDA"]
-Data = pd.read_pickle('Chatbot_Test')
+Data = pd.read_pickle('Chatbot_AusweisNr_Test')
 Data_erg_klass = pd.DataFrame([])
 for n in names:
     for m in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
