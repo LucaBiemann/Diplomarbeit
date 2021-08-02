@@ -3,7 +3,8 @@ import numpy as np
 import random
 import nltk
 import spacy
-
+from spacy.cli.download import download
+download('en_core_web_sm')
 random.seed(42)
 nlp = spacy.load("en_core_web_sm")
 
