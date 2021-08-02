@@ -109,12 +109,7 @@ for i in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
 
 
 
-Data_mes = pd.read_pickle('Messages_test')
-Data_mes['NumMes'] = 0
-Data['NumMes'] = 1
-Data_all = pd.concat([Data_mes, Data])
-Data_all = Data_all.sample(frac=1, random_state=42)
-Data_all.reset_index(drop=True, inplace=True)
+Data_all = pd.read_pickle('Chatbot_Test')
 
 for i in ['BERT', 'DistilBERT', 'XLNet', 'RoBERTa', 'ERNIE']:
     scaler = pickle.load(open('models/chatbot/scaler_{}.pkl'.format(i), 'rb'))
