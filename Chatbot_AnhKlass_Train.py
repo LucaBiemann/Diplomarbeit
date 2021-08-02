@@ -16,15 +16,15 @@ dataset = pd.read_pickle('Chatbot_AusweisNr')
 scaler = StandardScaler()
 classifiers = [
     KNeighborsClassifier(3),
+     QuadraticDiscriminantAnalysis(),
     DecisionTreeClassifier(max_depth=5),
     RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
     AdaBoostClassifier(),
     GaussianNB(),
-    QuadraticDiscriminantAnalysis(),
     MLPClassifier(hidden_layer_sizes=100, max_iter=1000, activation='logistic')]
-names = ["Nearest Neighbors",
+names = ["Nearest Neighbors","QDA",
          "Decision Tree", "Random Forest", "AdaBoost",
-         "Naive Bayes", "QDA", "MLP"]
+         "Naive Bayes",  "MLP"]
 for c, n in zip(classifiers, names):
     for m in ['BERT','DistilBERT','XLNet', 'RoBERTa','ERNIE']:
         scaler = pickle.load(open('models/chatbot/scaler_{}.pkl'.format(m), 'rb'))
